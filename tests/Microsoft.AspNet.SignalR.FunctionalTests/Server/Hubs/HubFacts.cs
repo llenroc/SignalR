@@ -1126,7 +1126,10 @@ namespace Microsoft.AspNet.SignalR.Tests
         {
             var type = typeof(Hub);
             // Hub has the disconnect method
-            Assert.True(type.GetMethod("OnDisconnected") != null);
+            Assert.True(type.GetMethod("OnDisconnected", new Type[0]) != null);
+
+            // Hub has the disconnect method
+            Assert.True(type.GetMethod("OnDisconnected", new Type[] { typeof(bool) }) != null);
 
             // Hub has the connect method
             Assert.True(type.GetMethod("OnConnected") != null);
